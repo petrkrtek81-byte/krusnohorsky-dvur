@@ -10,6 +10,9 @@ const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const root = document.documentElement;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isMobile = () => innerWidth < 768 || innerHeight > innerWidth * 1.15;
+// šetření dat (Úspora dat v telefonu / 2G): průlety se nestahují, zůstanou plakáty a texty
+const conn = navigator.connection || {};
+const saveData = conn.saveData === true || /(^|-)2g$/.test(conn.effectiveType || '');
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 root.classList.add('js');
 
@@ -46,11 +49,26 @@ $$('.karta').forEach(k => k.addEventListener('pointermove', e => {
   k.style.setProperty('--my', `${e.clientY - r.top}px`);
 }));
 
-/* ---------- terasa: jemný parallax ---------- */
+/* ---------- terasa: jemný parallax (jednou za snímek) ---------- */
 const terasa = $('.terasa');
 if (terasa && !reduce) {
-  const pa = () => { const r = terasa.getBoundingClientRect(); terasa.style.setProperty('--py', String(Math.round((r.top + r.height / 2 - innerHeight / 2) * -0.12))); };
-  addEventListener('scroll', pa, { passive: true }); pa();
+  let tick = false;
+  const pa = () => { tick = false; const r = terasa.getBoundingClientRect(); if (r.bottom < -200 || r.top > innerHeight + 200) return; terasa.style.setProperty('--py', String(Math.round((r.top + r.height / 2 - innerHeight / 2) * -0.12))); };
+  addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(pa); } }, { passive: true }); pa();
+}
+
+/* ---------- telefon: spodní lišta Rezervovat / Zavolat (objeví se po úvodu, schová se u kontaktu) ---------- */
+const lista = $('.mobil-lista');
+if (lista) {
+  const uvod = $('#uvod'), kontakt = $('#kontakt');
+  let t2 = false;
+  const ml = () => {
+    t2 = false;
+    const za = uvod ? uvod.getBoundingClientRect().bottom < innerHeight * 0.6 : scrollY > 300;
+    const u = kontakt ? kontakt.getBoundingClientRect().top < innerHeight * 0.8 : false;
+    lista.classList.toggle('is-on', za && !u);
+  };
+  addEventListener('scroll', () => { if (!t2) { t2 = true; requestAnimationFrame(ml); } }, { passive: true }); ml();
 }
 
 /* ---------- průlety (sekvence snímků na canvasu) ---------- */
@@ -68,7 +86,9 @@ class Sequence {
     this.started = false;
     this.caps = $$('.cap', section).map(el => ({ el, a: +el.dataset.in, b: +(el.dataset.out || 1.01) }));
     this.resize();
-    addEventListener('resize', () => this.resize());
+    // ResizeObserver místo window resize: na telefonu se při schovávání adresního řádku nic nepřekresluje
+    if ('ResizeObserver' in window) new ResizeObserver(() => this.resize()).observe(this.canvas);
+    else addEventListener('resize', () => this.resize());
   }
   url(i) { return `assets/seq/${this.name}/${this.kind}/${String(i + 1).padStart(4, '0')}.webp`; }
   start() {
@@ -92,7 +112,7 @@ class Sequence {
       img.onerror = next;
       img.src = this.url(i);
     };
-    for (let p = 0; p < 6; p++) next(); // 6 souběžných stahování
+    for (let p = 0, n = this.kind === 'm' ? 4 : 6; p < n; p++) next(); // souběžná stahování (telefon 4, desktop 6)
   }
   nearest(i) {
     if (this.frames[i]) return i;
@@ -103,10 +123,12 @@ class Sequence {
     return -1;
   }
   resize() {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
+    // snímky mají nejvýš 1280 px, větší plátno jen zbytečně žere paměť a výkon (hlavně v telefonu)
+    const dpr = Math.min(devicePixelRatio || 1, this.kind === 'm' ? 2 : 1.5);
     const r = this.canvas.getBoundingClientRect();
-    this.canvas.width = Math.max(1, Math.round(r.width * dpr));
-    this.canvas.height = Math.max(1, Math.round(r.height * dpr));
+    const w = Math.max(1, Math.round(r.width * dpr)), h = Math.max(1, Math.round(r.height * dpr));
+    if (w === this.canvas.width && h === this.canvas.height) return; // nastavení stejné velikosti by plátno vymazalo
+    this.canvas.width = w; this.canvas.height = h;
     this.draw(this.target, true);
   }
   draw(i, force) {
@@ -133,6 +155,7 @@ async function initSequences() {
   let manifest = {};
   try { manifest = await (await fetch('assets/seq/manifest.json', { cache: 'no-cache' })).json(); } catch { /* bez průletů zůstanou plakáty */ }
   const seqs = sections.filter(s => manifest[s.dataset.seq]).map(s => new Sequence(s, manifest[s.dataset.seq]));
+  if (saveData) { root.classList.add('setri-data'); seqs.forEach(q => q.caps.forEach(c => c.el.classList.add('is-on'))); return; }
   if (reduce) { seqs.forEach(q => { q.start(); q.target = Math.round(q.count * 0.6); q.caps.forEach(c => c.el.classList.add('is-on')); }); return; }
 
   // úvodní průlet hned, ostatní až s předstihem před příchodem (nebo při najetí na kartu rozcestníku)
@@ -145,6 +168,7 @@ async function initSequences() {
   const g = window.gsap, ST = window.ScrollTrigger;
   if (g && ST) {
     g.registerPlugin(ST);
+    ST.config({ ignoreMobileResize: true }); // schovávání adresního řádku nepřepočítává scroll (žádné poskakování)
     seqs.forEach(q => ST.create({ trigger: q.section, start: 'top top', end: 'bottom bottom', scrub: 0.4, onUpdate: self => q.progress(self.progress) }));
     seqs.forEach(q => q.progress(0));
   } else {

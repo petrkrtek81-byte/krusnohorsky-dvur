@@ -7,15 +7,16 @@ Statický web (HTML/CSS/JS, bez backendu) se „scroll fly-through“ efektem: p
 - `assets/css/film.css`, `assets/js/film.js` – styly a skript (GSAP + ScrollTrigger z cdnjs; bez nich funguje záložní posluchač scrollu)
 - `assets/seq/<průlet>/{d,m}/0001.webp` – snímky průletů: desktop 1280×720 při 24 fps, mobil výřez 9:16 (450×800) při 12 fps; načítají se postupně od hrubých k jemným
 - `nastroje/zpracuj-media.js` – z `assets/generated/raw` udělá jednotný barevný grade, WebP fotky (1920 + 960 px) a snímky průletů; když video chybí, složí průlet z fotek (plynulý nájezd kamery + prolnutí)
+- Telefon: plakát i snímky průletu jsou výřez 9:16 podle cíle kamery, výška sekcí v `svh` (neposkakuje při schovávání adresního řádku), plátno se nepřekresluje při změně adresního řádku, při Úspoře dat / 2G se průlety nestahují, spodní lišta Rezervovat / Zavolat
 - `nastroje/server.js` – náhled: `node nastroje/server.js . 5580` → http://localhost:5580
 
 Web je návrh: `noindex` + `robots.txt` Disallow.
 
-## Vygenerované soubory (Google Gemini – Nano Banana)
+## Vygenerované soubory (Google Gemini – Nano Banana a Veo)
 
 Verze z 21. 11. 2026 (léto, zlatá hodinka, bez sněhu). Všechny vznikly v jednom chatu Gemini podle tří koláží skutečných fotek hotelu (`podklady/reference/kolaz-exterier.jpg`, `kolaz-vchod.jpg` – fotky z Mapy.com, `kolaz-interier.jpg`). Skutečné uspořádání podle majitele: vchod je z boku u terasy s nápisem RESTAURACE (červené schody, prosklené dveře v kamenné zdi), uvnitř vpravo bar a restaurace, vlevo schodiště nahoru k pokojům. Originály v `assets/generated/raw/`, upravené WebP v `assets/generated/`. Při výměně za skutečné fotky stačí nahradit soubor v `raw/` (stejný název) a spustit `node nastroje/zpracuj-media.js`.
 
-Videa (Veo) dnes nešla – denní limit byl vyčerpaný, proto jsou průlety složené z fotek (plynulý nájezd kamery + prolnutí). Až bude limit, lze ve stejném chatu vygenerovat videa a uložit je jako `raw/v1-prilet-k-vchodu.mp4`, `v2-hala-pokoj.mp4`, `v3-hala-restaurace.mp4` (skript je pak použije místo fotek). Původní zimní verze je v tagu `zaloha-2026-11-21-zimni-verze`.
+Průlety jsou skutečná videa z Veo (Gemini, 21. 11. 2026, každé 10 s, 1280×720) vygenerovaná ze stejných fotek: `v1-prilet-k-vchodu.mp4` (dron od západu slunce ke vchodu – rychlé prolnutí Veo v 5,7 s je v `zpracuj-media.js` nahrazeno plynulým), `v2-hala-pokoj.mp4` (chodba → doleva po schodech → chodba s kobercem; na konci prolnutí do fotky pokoje), `v3-hala-restaurace.mp4` (chodba → doprava podél baru → krb). Úpravy videí a mobilní výřez (sleduje cíl kamery) jsou v objektu `VIDEO` ve skriptu. Když video chybí, skript složí průlet z fotek. Původní zimní verze je v tagu `zaloha-2026-11-21-zimni-verze`.
 
 | Soubor | Co je na něm | Kde na webu |
 |---|---|---|

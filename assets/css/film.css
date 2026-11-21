@@ -67,7 +67,7 @@ p{ margin:0 0 1em; }
 .menu__foot a{ text-decoration:none; color:var(--ink); }
 
 /* ---------- průlet: dlouhá sekce, uvnitř „přilepený“ canvas na celou obrazovku ---------- */
-.fly{ position:relative; height:var(--h, 420vh); background:var(--bg); }
+.fly{ position:relative; height:calc(var(--h, 4.2) * 100vh); height:calc(var(--h, 4.2) * 100svh); background:var(--bg); }
 .fly__stage{ position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; }
 .fly__stage canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 .fly__stage::after{ content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, rgba(10,16,15,.55) 0%, rgba(10,16,15,0) 30%, rgba(10,16,15,0) 55%, rgba(10,16,15,.8) 100%); }
@@ -110,7 +110,7 @@ p{ margin:0 0 1em; }
 .cesty__head p{ max-width:28rem; color:var(--muted); margin:0; }
 .cesty__grid{ display:grid; gap:1rem; }
 @media (min-width:860px){ .cesty__grid{ grid-template-columns:1fr 1fr; gap:1.25rem; } }
-.karta{ --mx:50%; --my:50%; position:relative; isolation:isolate; display:flex; align-items:flex-end; min-height:clamp(420px, 72vh, 760px); overflow:hidden; border-radius:var(--r); text-decoration:none; background:var(--bg-2); }
+.karta{ --mx:50%; --my:50%; position:relative; isolation:isolate; display:flex; align-items:flex-end; min-height:clamp(420px, 72vh, 760px); min-height:clamp(420px, 72svh, 760px); overflow:hidden; border-radius:var(--r); text-decoration:none; background:var(--bg-2); }
 .karta img{ position:absolute; inset:0; z-index:-2; width:100%; height:100%; object-fit:cover; transform:scale(1.02); transition:transform 1.2s var(--ease), filter .6s; filter:brightness(.78); }
 .karta::before{ content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg, rgba(10,16,15,0) 40%, rgba(10,16,15,.85) 100%); }
 .karta::after{ content:""; position:absolute; inset:0; z-index:-1; background:radial-gradient(420px circle at var(--mx) var(--my), rgba(255,196,120,.28), transparent 60%); opacity:0; transition:opacity .4s; }
@@ -171,7 +171,7 @@ p{ margin:0 0 1em; }
 .akce p{ margin:0; color:var(--muted); }
 
 /* ---------- terasa: velká fotka ---------- */
-.terasa{ position:relative; min-height:110vh; display:grid; align-items:end; overflow:hidden; }
+.terasa{ position:relative; min-height:110vh; min-height:110svh; display:grid; align-items:end; overflow:hidden; }
 .terasa img{ position:absolute; inset:-8% 0; width:100%; height:116%; object-fit:cover; transform:translateY(calc(var(--py, 0) * 1px)); }
 .terasa::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,16,15,.1) 30%, rgba(10,16,15,.9) 100%); }
 .terasa .wrap{ position:relative; z-index:1; padding-bottom:clamp(4rem, 12vh, 8rem); }
@@ -225,8 +225,23 @@ p{ margin:0 0 1em; }
 
 /* mobil: kratší průlety (méně snímků, rychlejší) */
 @media (max-width:767px){
-  .fly{ height:calc(var(--h, 420vh) * .78); }
+  .fly{ height:calc(var(--h, 4.2) * 78vh); height:calc(var(--h, 4.2) * 78svh); }
   .cap{ bottom:clamp(4rem, 14vh, 7rem); }
   .fly__kicker{ font-size:.68rem; letter-spacing:.16em; }
 }
 @media (max-width:767px){ .mega em{ font-size:.34em; } }
+
+/* ---------- telefon: spodní lišta s rezervací a telefonem ---------- */
+.mobil-lista{ display:none; }
+@media (max-width:767px){
+  .mobil-lista{ position:fixed; z-index:40; left:0; right:0; bottom:0; display:grid; grid-template-columns:1fr auto; gap:.5rem; padding:.6rem var(--gutter) calc(.6rem + env(safe-area-inset-bottom)); background:rgba(10,16,15,.92); border-top:1px solid var(--line); transform:translateY(110%); transition:transform .35s var(--ease); }
+  @supports (backdrop-filter:blur(8px)){ .mobil-lista{ background:rgba(10,16,15,.72); backdrop-filter:blur(12px); } }
+  .mobil-lista.is-on{ transform:none; }
+  .menu-open .mobil-lista{ transform:translateY(110%); }
+  .mobil-lista .btn{ min-height:48px; }
+  .mobil-lista .btn--tel{ padding:0 1.1rem; }
+  .pata{ padding-bottom:5rem; }
+  /* menší dotykové cíle pryč, čitelnější drobné písmo */
+  .listek li{ font-size:.95rem; }
+}
+.setri-data .fly canvas{ display:none; }

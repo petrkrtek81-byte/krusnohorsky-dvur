@@ -1,17 +1,14 @@
 {
  "prilet": {
-  "d": 216,
-  "m": 108,
-  "zFotek": true
+  "d": 206,
+  "m": 103
  },
  "pokoje": {
-  "d": 226,
-  "m": 113,
-  "zFotek": true
+  "d": 279,
+  "m": 140
  },
  "restaurace": {
-  "d": 187,
-  "m": 94,
-  "zFotek": true
+  "d": 240,
+  "m": 120
  }
 }

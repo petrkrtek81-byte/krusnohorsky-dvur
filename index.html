@@ -44,9 +44,9 @@
 
 <main>
   <!-- 1. ÚVOD – obří nápis přes záběr budovy, scrollem kamera přilétá ke vchodu (průlet „prilet“) -->
-  <section class="fly" id="uvod" data-seq="prilet" style="--h:420vh" aria-label="Přílet ke Krušnohorskému Dvoru">
+  <section class="fly" id="uvod" data-seq="prilet" style="--h:4.2" aria-label="Přílet ke Krušnohorskému Dvoru">
     <div class="fly__stage">
-      <picture><source media="(max-width:767px)" srcset="assets/generated/01-exterier-m.webp"><img class="fly__poster" style="--op:66%" src="assets/generated/01-exterier.webp" alt="Krušnohorský Dvůr u golfového hřiště na Cínovci při západu slunce" fetchpriority="high"></picture>
+      <picture><source media="(max-width:767px)" srcset="assets/generated/01-exterier-m.webp"><img class="fly__poster" style="--op:79%" src="assets/generated/01-exterier.webp" alt="Krušnohorský Dvůr u golfového hřiště na Cínovci při západu slunce" fetchpriority="high"></picture>
       <canvas aria-hidden="true"></canvas>
       <div class="fly__overlay">
         <h1 class="mega"><span>Krušnohorský</span><span>Dvůr</span><em>horský hotel a restaurace</em></h1>
@@ -101,9 +101,9 @@
   </section>
 
   <!-- 3. POKOJE – kamera vletí dovnitř: hala → schodiště → pokoj (průlet „pokoje“) -->
-  <section class="fly" id="pokoje" data-seq="pokoje" style="--h:380vh" aria-label="Průlet halou do pokoje">
+  <section class="fly" id="pokoje" data-seq="pokoje" style="--h:3.8" aria-label="Průlet halou do pokoje">
     <div class="fly__stage">
-      <picture><source media="(max-width:767px)" srcset="assets/generated/03-hala-m.webp"><img class="fly__poster" style="--op:12%" src="assets/generated/03-hala.webp" alt="Vstupní chodba s červenou stěnou – vlevo schodiště k pokojům, vpravo bar a restaurace" loading="lazy"></picture>
+      <picture><source media="(max-width:767px)" srcset="assets/generated/03-hala-m.webp"><img class="fly__poster" style="--op:21%" src="assets/generated/03-hala.webp" alt="Vstupní chodba s červenou stěnou – vlevo schodiště k pokojům, vpravo bar a restaurace" loading="lazy"></picture>
       <canvas aria-hidden="true"></canvas>
       <div class="fly__overlay">
         <div class="cap" data-in=".05" data-out=".5"><span class="label">Ubytování</span><h2>Pokoje</h2></div>
@@ -172,7 +172,7 @@
   </section>
 
   <!-- 4. RESTAURACE – průlet halou ke krbu (průlet „restaurace“) -->
-  <section class="fly" id="restaurace" data-seq="restaurace" style="--h:380vh" aria-label="Průlet do restaurace">
+  <section class="fly" id="restaurace" data-seq="restaurace" style="--h:3.8" aria-label="Průlet do restaurace">
     <div class="fly__stage">
       <picture><source media="(max-width:767px)" srcset="assets/generated/08-restaurace-m.webp"><img class="fly__poster" src="assets/generated/08-restaurace.webp" alt="Restaurace s prosklenými krby a prostřenými stoly" loading="lazy"></picture>
       <canvas aria-hidden="true"></canvas>
@@ -263,5 +263,11 @@
     </div>
   </section>
 </main>
+
+<!-- telefon: spodní lišta (zobrazí film.js po úvodním průletu) -->
+<div class="mobil-lista" aria-label="Rychlá rezervace">
+  <a class="btn btn--amber" href="https://booking.previo.cz/?hotId=3355&amp;theme=gold&amp;lang=cs" target="_blank" rel="noopener">Rezervovat pobyt</a>
+  <a class="btn btn--tel" href="tel:+420778051970" aria-label="Zavolat na recepci +420 778 051 970">Zavolat</a>
+</div>
 </body>
 </html>
