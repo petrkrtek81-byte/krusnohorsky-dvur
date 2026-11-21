@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Krušnohorský Dvůr – horský hotel a restaurace na Cínovci</title>
+<meta name="description" content="Horský hotel a restaurace Krušnohorský Dvůr na Cínovci v Krušných horách, 865 m n. m. Osm pokojů, restaurace s krbem a terasa s výhledem.">
+<meta name="robots" content="noindex, nofollow"><!-- návrh webu – zatím neindexovat -->
+<meta name="theme-color" content="#0A100F">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="preload" href="assets/fonts/manrope-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/seq/prilet/d/0001.webp" as="image" media="(min-width:768px)">
+<link rel="preload" href="assets/seq/prilet/m/0001.webp" as="image" media="(max-width:767px)">
+<link rel="stylesheet" href="assets/css/film.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/film.js" defer></script>
+</head>
+<body>
+
+<header class="top">
+  <a class="top__logo" href="#uvod" aria-label="Krušnohorský Dvůr – na začátek"><img src="assets/img/logo-bila.png" alt="Krušnohorský Dvůr – hotel a restaurace" width="592" height="140"></a>
+  <div class="top__right">
+    <a class="btn btn--amber" href="https://booking.previo.cz/?hotId=3355&amp;theme=gold&amp;lang=cs" target="_blank" rel="noopener">Rezervovat pobyt</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu"><span class="menu-btn__lines" aria-hidden="true"><span></span><span></span><span></span></span><span class="menu-btn__label">Menu</span></button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-label="Hlavní menu">
+  <ul class="menu__list">
+    <li><a href="cenik.html"><small>01</small>Ceník</a></li>
+    <li><a href="#pokoje"><small>02</small>Pokoje</a></li>
+    <li><a href="#restaurace"><small>03</small>Restaurace</a></li>
+    <li><a href="https://booking.previo.cz/?hotId=3355&amp;theme=gold&amp;lang=cs" target="_blank" rel="noopener"><small>04</small>Rezervace</a></li>
+    <li><a href="https://petrkrtek81-byte.github.io/golf-test/" target="_blank" rel="noopener"><small>05</small>Golf</a></li>
+    <li><a href="#kontakt"><small>06</small>Kontakt</a></li>
+  </ul>
+  <div class="menu__foot">
+    <a href="tel:+420778051970">+420 778 051 970</a>
+    <a href="mailto:info@krusnohorskydvur.cz">info@krusnohorskydvur.cz</a>
+    <span>Cínovec 275 · restaurace denně 11–22 h</span>
+  </div>
+</nav>
+
+<main>
+  <!-- 1. ÚVOD – obří nápis přes záběr budovy, scrollem kamera přilétá ke vchodu (průlet „prilet“) -->
+  <section class="fly" id="uvod" data-seq="prilet" style="--h:420vh" aria-label="Přílet ke Krušnohorskému Dvoru">
+    <div class="fly__stage">
+      <picture><source media="(max-width:767px)" srcset="assets/generated/01-exterier-soumrak-m.webp"><img class="fly__poster" src="assets/generated/01-exterier-soumrak.webp" alt="Krušnohorský Dvůr za soumraku na zasněžené pláni Cínovce" fetchpriority="high"></picture>
+      <canvas aria-hidden="true"></canvas>
+      <div class="fly__overlay">
+        <h1 class="mega"><span>Krušnohorský</span><span>Dvůr</span><em>horský hotel a restaurace</em></h1>
+        <div class="cap" data-in=".42" data-out=".74">
+          <span class="label">Cínovec · 865 m n. m.</span>
+          <p>Horský hotel na hřebeni Krušných hor, v&nbsp;těsné blízkosti hranic s&nbsp;Německem. Osm pokojů, restaurace s&nbsp;hořícím krbem a&nbsp;terasa s&nbsp;výhledem na České středohoří.</p>
+        </div>
+        <div class="cap cap--right" data-in=".8">
+          <h2>Vítejte</h2>
+          <p>Dveře jsou otevřené. Kam půjdete dál?</p>
+        </div>
+        <div class="fly__kicker"><span>Hotel &amp; restaurace</span><span class="scroll-hint">Scrollujte<i></i></span></div>
+      </div>
+      <div class="fly__progress" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <!-- 2. ROZCESTNÍK – pokoje / restaurace -->
+  <section class="cesty" id="rozcestnik" aria-labelledby="cestyTitle">
+    <div class="wrap">
+      <div class="cesty__head reveal">
+        <h2 id="cestyTitle">Kam <em>dnes večer?</em></h2>
+        <p>Vyberte si – kamera vás provede dovnitř. Snídaně formou bufetu je v&nbsp;ceně ubytování, restaurace je otevřená každý den od 11 do 22 hodin.</p>
+      </div>
+      <div class="cesty__grid">
+        <a class="karta reveal" href="#pokoje" data-prefetch="pokoje">
+          <picture><source media="(max-width:767px)" srcset="assets/generated/04-pokoj-exklusiv-m.webp"><img src="assets/generated/04-pokoj-exklusiv.webp" alt="" loading="lazy"></picture>
+          <span class="karta__body"><small>8 pokojů · 24 lůžek</small><strong>Pokoje</strong><span><b>Projít pokoje</b><span class="karta__arrow" aria-hidden="true">→</span></span></span>
+        </a>
+        <a class="karta reveal" href="#restaurace" data-prefetch="restaurace">
+          <picture><source media="(max-width:767px)" srcset="assets/generated/08-restaurace-m.webp"><img src="assets/generated/08-restaurace.webp" alt="" loading="lazy"></picture>
+          <span class="karta__body"><small>Denně 11–22 h</small><strong>Restaurace</strong><span><b>Ke krbu a ke stolu</b><span class="karta__arrow" aria-hidden="true">→</span></span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. POKOJE – kamera vletí dovnitř: hala → schodiště → pokoj (průlet „pokoje“) -->
+  <section class="fly" id="pokoje" data-seq="pokoje" style="--h:380vh" aria-label="Průlet halou do pokoje">
+    <div class="fly__stage">
+      <picture><source media="(max-width:767px)" srcset="assets/generated/03-hala-m.webp"><img class="fly__poster" src="assets/generated/03-hala.webp" alt="Recepce hotelu s kamennou stěnou a dřevěným schodištěm" loading="lazy"></picture>
+      <canvas aria-hidden="true"></canvas>
+      <div class="fly__overlay">
+        <div class="cap" data-in=".05" data-out=".5"><span class="label">Ubytování</span><h2>Pokoje</h2></div>
+        <div class="cap cap--right" data-in=".62"><p>Nově zařízené pokoje s&nbsp;luxusní koupelnou pro jednotlivce, skupiny i&nbsp;firmy. Snídaně v&nbsp;ceně.</p></div>
+      </div>
+      <div class="fly__progress" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <section class="sekce" aria-labelledby="pokojeTitle">
+    <div class="wrap">
+      <div class="sekce__head reveal">
+        <div>
+          <span class="label">Nabídka pokojů</span>
+          <h2 id="pokojeTitle">Čtyři kategorie <em>pokojů</em></h2>
+        </div>
+        <div>
+          <p>K&nbsp;dispozici je celkem 8&nbsp;pokojů ve 4&nbsp;kategoriích s&nbsp;maximální kapacitou 24&nbsp;lůžek: 7&nbsp;dvoulůžkových pokojů s&nbsp;možností jedné přistýlky a&nbsp;1&nbsp;rodinný čtyřlůžkový pokoj. Všechny mají vlastní koupelnu s&nbsp;podlahovým topením, TV se satelitním příjmem a&nbsp;Wi-Fi zdarma.</p>
+          <ul class="fakta"><li><b>14:00</b>check-in</li><li><b>10:00</b>check-out</li><li><b>8–10 h</b>snídaně v ceně</li></ul>
+        </div>
+      </div>
+
+      <!-- TODO: ceny pokojů na webu hotelu nejsou (mění se podle sezóny v systému Previo) – níže jsou orientační, ověřit u klienta -->
+      <article class="pokoj reveal">
+        <div class="pokoj__foto"><picture><source media="(max-width:767px)" srcset="assets/generated/04-pokoj-exklusiv-m.webp"><img src="assets/generated/04-pokoj-exklusiv.webp" alt="Exklusivní pokoj večer" loading="lazy"></picture></div>
+        <div>
+          <span class="pokoj__typ">Dvoulůžkový</span>
+          <h3>Exklusivní pokoj</h3>
+          <p>Prostorný pokoj s&nbsp;nádherným výhledem na České středohoří a&nbsp;golfové hřiště. Součástí pokoje je předsíň a&nbsp;luxusní koupelna se sociálním zařízením, moderní nábytek pro příjemné posezení i&nbsp;spaní.</p>
+          <ul class="vybaveni"><li>Výhled na středohoří a golf</li><li>Předsíň</li><li>Luxusní koupelna</li><li>TV se satelitem</li><li>Wi-Fi</li></ul>
+          <div class="cena"><strong>od 2 490 Kč <small>/ noc *</small></strong><a class="btn btn--amber" href="https://booking.previo.cz/?hotId=3355&amp;theme=gold&amp;lang=cs" target="_blank" rel="noopener">Rezervovat</a></div>
+        </div>
+      </article>
+      <article class="pokoj reveal">
+        <div class="pokoj__foto"><picture><source media="(max-width:767px)" srcset="assets/generated/05-pokoj-komfort-m.webp"><img src="assets/generated/05-pokoj-komfort.webp" alt="Komfortní pokoj večer" loading="lazy"></picture></div>
+        <div>
+          <span class="pokoj__typ">Dvoulůžkový</span>
+          <h3>Komfortní pokoj</h3>
+          <p>Moderně zařízený pokoj s&nbsp;luxusní koupelnou se sprchovým koutem a&nbsp;sociálním zařízením. Součástí vybavení je TV se satelitním příjmem a&nbsp;internetové připojení.</p>
+          <ul class="vybaveni"><li>Luxusní koupelna</li><li>TV se satelitem</li><li>Internet</li></ul>
+          <div class="cena"><strong>od 1 990 Kč <small>/ noc *</small></strong><a class="btn btn--amber" href="https://booking.previo.cz/?hotId=3355&amp;theme=gold&amp;lang=cs" target="_blank" rel="noopener">Rezervovat</a></div>
+        </div>
+      </article>
+      <article class="pokoj reveal">
+        <div class="pokoj__foto"><picture><source media="(max-width:767px)" srcset="assets/generated/06-pokoj-standard-m.webp"><img src="assets/generated/06-pokoj-standard.webp" alt="Standardní pokoj večer" loading="lazy"></picture></div>
+        <div>
+          <span class="pokoj__typ">Dvoulůžkový</span>
+          <h3>Standardní pokoj</h3>
+          <p>Moderně zařízený pokoj s&nbsp;koupelnou se sprchovým koutem a&nbsp;sociálním zařízením. Součástí vybavení je TV se satelitním příjmem a&nbsp;internetové připojení.</p>
+          <ul class="vybaveni"><li>Sprchový kout a WC</li><li>TV se satelitem</li><li>Internet</li></ul>
+          <div class="cena"><strong>od 1 690 Kč <small>/ noc *</small></strong><a class="btn btn--amber" href="https://booking.previo.cz/?hotId=3355&amp;theme=gold&amp;lang=cs" target="_blank" rel="noopener">Rezervovat</a></div>
+        </div>
+      </article>
+      <article class="pokoj reveal">
+        <div class="pokoj__foto"><picture><source media="(max-width:767px)" srcset="assets/generated/07-pokoj-rodinny-m.webp"><img src="assets/generated/07-pokoj-rodinny.webp" alt="Rodinný pokoj pro čtyři večer" loading="lazy"></picture></div>
+        <div>
+          <span class="pokoj__typ">Čtyřlůžkový</span>
+          <h3>Rodinný pokoj</h3>
+          <p>Prostorný pokoj s&nbsp;předsíní a&nbsp;moderním zařízením. Součástí pokoje je luxusní koupelna se dvěma sprchovými kouty, dvěma umyvadly a&nbsp;dvěma oddělenými toaletami.</p>
+          <ul class="vybaveni"><li>4 lůžka</li><li>2 sprchy, 2 umyvadla, 2 WC</li><li>Předsíň</li><li>TV se satelitem</li></ul>
+          <div class="cena"><strong>od 2 890 Kč <small>/ noc *</small></strong><a class="btn btn--amber" href="https://booking.previo.cz/?hotId=3355&amp;theme=gold&amp;lang=cs" target="_blank" rel="noopener">Rezervovat</a></div>
+        </div>
+      </article>
+      <p class="pozn">* Orientační cena za pokoj a noc včetně snídaně. Aktuální ceny a volné termíny najdete v&nbsp;on-line rezervaci (Previo) nebo v&nbsp;<a href="cenik.html">ceníku</a>.</p>
+    </div>
+  </section>
+
+  <!-- 4. RESTAURACE – průlet halou ke krbu (průlet „restaurace“) -->
+  <section class="fly" id="restaurace" data-seq="restaurace" style="--h:380vh" aria-label="Průlet do restaurace">
+    <div class="fly__stage">
+      <picture><source media="(max-width:767px)" srcset="assets/generated/08-restaurace-m.webp"><img class="fly__poster" src="assets/generated/08-restaurace.webp" alt="Restaurace s prosklenými krby a prostřenými stoly" loading="lazy"></picture>
+      <canvas aria-hidden="true"></canvas>
+      <div class="fly__overlay">
+        <div class="cap" data-in=".05" data-out=".5"><span class="label">Denně 11–22 h</span><h2>Restaurace</h2></div>
+        <div class="cap cap--right" data-in=".62"><p>Večerní posezení u&nbsp;skvělého jídla a&nbsp;sklenky dobrého vína doplňuje dominanta restaurace – hořící krb.</p></div>
+      </div>
+      <div class="fly__progress" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <section class="sekce" aria-labelledby="restTitle">
+    <div class="wrap">
+      <div class="sekce__head reveal">
+        <div>
+          <span class="label">Kuchyně</span>
+          <h2 id="restTitle">U krbu <em>a u stolu</em></h2>
+        </div>
+        <p>Restaurace se kromě bohatého stálého jídelního lístku zaměřuje i&nbsp;na týdenní speciální nabídky – oblastní a&nbsp;národnostní speciality. V&nbsp;příznivém počasí doporučujeme posezení na terase s&nbsp;výhledem do kraje.</p>
+      </div>
+      <div class="mozaika reveal">
+        <figure class="velka"><picture><source media="(max-width:767px)" srcset="assets/generated/12-hoste-pripitek-m.webp"><img src="assets/generated/12-hoste-pripitek.webp" alt="Přátelé si u krbu připíjejí vínem" loading="lazy"></picture></figure>
+        <figure><picture><source media="(max-width:767px)" srcset="assets/generated/09-jidlo-kachna-m.webp"><img src="assets/generated/09-jidlo-kachna.webp" alt="Konfitované kachní stehno s karlovarským knedlíkem a červeným zelím" loading="lazy"></picture></figure>
+        <figure><picture><source media="(max-width:767px)" srcset="assets/generated/10-jidlo-steak-m.webp"><img src="assets/generated/10-jidlo-steak.webp" alt="Hovězí steak z pravé svíčkové s bramborami grenaille" loading="lazy"></picture></figure>
+        <figure><picture><source media="(max-width:767px)" srcset="assets/generated/11-jidlo-dezert-m.webp"><img src="assets/generated/11-jidlo-dezert.webp" alt="Kynuté borůvkové knedlíky s tvarohem" loading="lazy"></picture></figure>
+        <figure><picture><source media="(max-width:767px)" srcset="assets/generated/08-restaurace-m.webp"><img src="assets/generated/08-restaurace.webp" alt="Restaurace večer" loading="lazy"></picture></figure>
+        <figure class="pruh"><picture><source media="(max-width:767px)" srcset="assets/generated/13-hoste-vecere-m.webp"><img src="assets/generated/13-hoste-vecere.webp" alt="Pár při večeři u okna" loading="lazy"></picture></figure>
+      </div>
+
+      <!-- ukázka ze skutečného jídelního lístku 2026 (gramáže a ceny podle lístku hotelu) -->
+      <div class="listek reveal">
+        <div>
+          <h3>Polévky a předkrmy</h3>
+          <ul>
+            <li><span><small>0,3 l</small>Domácí gulášová</span><b>95 Kč</b></li>
+            <li><span><small>0,3 l</small>Staročeská bramboračka</span><b>85 Kč</b></li>
+            <li><span><small>100 g</small>Grilovaný kozí sýr s brusinkami a glazovanými vlašskými ořechy v medu</span><b>179 Kč</b></li>
+          </ul>
+          <h3 style="margin-top:2rem">Dezerty</h3>
+          <ul>
+            <li><span>Domácí kynutý borůvkový knedlík se strouhaným tvarohem a rozpuštěným máslem</span><b>169 Kč</b></li>
+            <li><span>Horké maliny s vanilkovou zmrzlinou a šlehačkou</span><b>139 Kč</b></li>
+          </ul>
+        </div>
+        <div>
+          <h3>České speciality a doporučujeme</h3>
+          <ul>
+            <li><span><small>400 g</small>Konfitované kachní stehno, domácí karlovarský knedlík a červené zelí</span><b>369 Kč</b></li>
+            <li><span><small>300 g</small>Vepřová krkovice na medu, zelí z červené řepy a bramborové špecle</span><b>329 Kč</b></li>
+            <li><span><small>300 g</small>Hovězí steak z pravé svíčkové, medovo-hořčicový demi-glace a brambory grenaille</span><b>569 Kč</b></li>
+            <li><span><small>200 g</small>Grilovaný losos se smetanovo-špenátovými tagliatelle a parmazánem</span><b>379 Kč</b></li>
+            <li><span><small>650 g</small>Konfitované vepřové koleno na černém pivě s rozpečeným chlebem a křenem</span><b>379 Kč</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="akce reveal">
+        <a class="btn btn--amber" href="tel:+420778051970">Rezervovat stůl</a>
+        <a class="btn" href="assets/img/jidelni-listek-2026.jpg" target="_blank" rel="noopener">Celý jídelní lístek</a>
+        <p>Ukázka z jídelního lístku 2026, ceny v Kč. Stůl rezervujete na +420&nbsp;778&nbsp;051&nbsp;970.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. TERASA – výhled na hory -->
+  <section class="terasa" aria-labelledby="terasaTitle">
+    <picture><source media="(max-width:767px)" srcset="assets/generated/14-terasa-m.webp"><img src="assets/generated/14-terasa.webp" alt="Dřevěná terasa hotelu s výhledem na hory při západu slunce" loading="lazy"></picture>
+    <div class="wrap reveal">
+      <span class="label">Terasa</span>
+      <h2 id="terasaTitle">Výhled až na <em>České středohoří</em></h2>
+      <p>V&nbsp;příznivém počasí doporučujeme posezení na venkovní terase s&nbsp;úchvatným výhledem. Z&nbsp;Cínovce je to kousek na běžky, na kolo i&nbsp;na golfové hřiště hned vedle hotelu.</p>
+    </div>
+  </section>
+
+  <!-- 6. KONTAKT -->
+  <section class="kontakt" id="kontakt" aria-labelledby="kontaktTitle">
+    <div class="wrap">
+      <h2 id="kontaktTitle" class="reveal">Kontakt</h2>
+      <div class="kontakt__grid reveal">
+        <div><small>Adresa</small>Krušnohorský Dvůr<br>Cínovec 275, 415 01 Dubí-Cínovec<br><a href="https://goo.gl/maps/Zgg7fF5qtht" target="_blank" rel="noopener">Navigovat →</a></div>
+        <div><small>Recepce</small><a href="tel:+420778051970">+420 778 051 970</a><br><a href="mailto:info@krusnohorskydvur.cz">info@krusnohorskydvur.cz</a></div>
+        <div><small>Restaurace</small>Pondělí – neděle<br>11:00 – 22:00</div>
+        <div><small>Pobyt</small>Check-in od 14:00<br>Check-out do 10:00</div>
+      </div>
+      <div class="pata">
+        <span>© 2026 Krušnohorský Dvůr · <a href="cenik.html">Ceník</a></span>
+        <span>Návrh webu – fotky a průlety vytvořeny s pomocí AI (Google Gemini), ceny pokojů orientační.</span>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
